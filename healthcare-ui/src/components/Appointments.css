@@ -1,0 +1,61 @@
+.appts-header__badge {
+  background: rgba(255,255,255,0.2) !important;
+  color: white !important;
+  gap: 6px;
+}
+.appts-body {
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+.appts-search-input {
+  padding-left: 40px !important;
+  border-radius: var(--radius-full) !important;
+}
+.appts-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-400);
+  display: flex;
+  pointer-events: none;
+}
+.appts-header {
+  background: var(--gradient-main);
+  padding: 120px 0 60px;
+  text-align: center;
+}
+
+.appts-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.appts-search-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+.appts-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.appts-count {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--gray-600);
+  margin-bottom: 16px;
+}
+
+.appts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}

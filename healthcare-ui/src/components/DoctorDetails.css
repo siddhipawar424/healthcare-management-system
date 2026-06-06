@@ -1,0 +1,153 @@
+.doctor-details-header {
+  background: var(--gradient-main);
+  padding: 100px 0 24px;
+}
+.doctor-details__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+.doctor-details__back:hover { color: white; }
+
+.doctor-details-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 28px;
+  padding-top: 32px;
+}
+
+.doctor-details-profile {
+  padding: 32px 24px;
+  text-align: center;
+  position: sticky;
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.doctor-details-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  margin-bottom: 4px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+
+.doctor-details-name {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--dark);
+  margin: 0;
+}
+
+.doctor-details-spec {
+  font-size: 0.88rem;
+  color: var(--primary);
+  font-weight: 700;
+  margin: 0;
+}
+
+.doctor-details-rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 0.85rem;
+  justify-content: center;
+  color: var(--gray-600);
+}
+
+.doctor-details-badges { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+
+.doctor-details-stats {
+  display: flex;
+  gap: 0;
+  width: 100%;
+  border: 1px solid var(--gray-100);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin: 4px 0;
+}
+.doctor-details-stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 8px;
+  gap: 3px;
+  border-right: 1px solid var(--gray-100);
+  font-size: 0.82rem;
+}
+.doctor-details-stat:last-child { border-right: none; }
+.doctor-details-stat strong { font-size: 0.95rem; font-weight: 900; color: var(--dark); }
+.doctor-details-stat small { color: var(--gray-400); font-size: 0.72rem; }
+
+.doctor-details-fee {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px dashed var(--gray-200);
+  width: 100%;
+}
+.doctor-details-fee-amount { font-size: 1.8rem; font-weight: 900; color: var(--dark); }
+.doctor-details-fee-label { font-size: 0.78rem; color: var(--gray-400); font-weight: 600; }
+
+/* Right */
+.doctor-details-right { display: flex; flex-direction: column; gap: 20px; }
+
+.doctor-details-section-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--primary-light);
+}
+
+.doctor-details-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.doctor-details-edu {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+.doctor-details-edu:last-child { border-bottom: none; }
+.doctor-details-edu-icon {
+  width: 36px; height: 36px;
+  background: var(--primary-light);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.doctor-details-info-grid { display: flex; flex-direction: column; gap: 12px; }
+.doctor-details-info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 0.88rem;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--gray-100);
+}
+.doctor-details-info-item:last-child { border-bottom: none; }
+.doctor-details-info-item span:last-child { color: var(--gray-600); text-align: right; }
+
+@media (max-width: 900px) {
+  .doctor-details-grid { grid-template-columns: 1fr; }
+  .doctor-details-profile { position: static; }
+}
