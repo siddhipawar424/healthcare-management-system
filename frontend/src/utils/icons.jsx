@@ -37,6 +37,7 @@ import {
   FaFlagCheckered,
   FaRocket,
   FaTimes,
+  FaChartBar,
 } from "react-icons/fa";
 import { MdDashboard, MdEmail, MdMessage, MdScience } from "react-icons/md";
 import { HiOutlineLogout } from "react-icons/hi";
@@ -80,6 +81,7 @@ export {
   FaFlagCheckered,
   FaRocket,
   FaTimes,
+  FaChartBar,
   MdDashboard,
   MdEmail,
   MdMessage,

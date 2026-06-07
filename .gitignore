@@ -1,35 +1,72 @@
+# ==========================================
+# Healthcare Management System - Git Ignore
+# ==========================================
+
+# Environment variables
+.env
+.env.local
+.env.*.local
 HELP.md
+
+# Dependency directories
+node_modules/
+jspm_packages/
+web_modules/
+
+# Build and distribution directories
+backend/target/
+frontend/dist/
+frontend/dist-ssr/
+frontend/out-tsc/
+build/
+dist/
 target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+*.war
+*.sar
+*.ear
+*.class
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# Maven wrapper jar
+backend/.mvn/wrapper/maven-wrapper.jar
+**/maven-wrapper.jar
 
-### IntelliJ IDEA ###
-.idea
-*.iws
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS metadata
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDEs and Editors
+.vscode/
+!.vscode/extensions.json
+.idea/
 *.iml
+*.iws
 *.ipr
-
-### NetBeans ###
+.project
+.classpath
+.settings/
+.factorypath
+.springBeans
+.sts4-cache/
 /nbproject/private/
 /nbbuild/
-/dist/
 /nbdist/
 /.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
-.vscode/
-
-.env
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

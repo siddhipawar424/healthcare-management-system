@@ -78,27 +78,31 @@ Appointments can be managed through the following statuses:
 ## Project Structure
 
 ```text
-healthcare-management-system
+healthcare-management-system/
 │
-├── healthcare-ui/                 # React Frontend
-│   ├── public/
+├── backend/                       # Spring Boot Backend
 │   ├── src/
-│   └── package.json
+│   ├── pom.xml
+│   ├── mvnw
+│   ├── mvnw.cmd
+│   └── .mvn/
 │
-├── src/main/java/com/siddhi/healthcare/
-│   ├── controller/
-│   ├── model/
-│   ├── repository/
-│   ├── service/
-│   └── HealthcareApplication.java
+├── frontend/                      # Vite React Frontend
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.js
 │
-├── src/main/resources/
-│   └── application.properties
+├── database/                      # Database Migrations
+│   └── migrations/
+│       └── migration_add_appointment_status.sql
 │
-├── sql/
-│   └── migration_add_appointment_status.sql
+├── screenshots/                   # Application Screenshots
 │
-└── pom.xml
+├── docs/                          # Project Documentation
+│
+├── README.md
+└── .gitignore
 ```
 
 ---
@@ -187,7 +191,13 @@ cd healthcare-management-system
 Configure database credentials in:
 
 ```properties
-src/main/resources/application.properties
+backend/src/main/resources/application.properties
+```
+
+Navigate to backend:
+
+```bash
+cd backend
 ```
 
 Run backend:
@@ -195,6 +205,7 @@ Run backend:
 ```bash
 mvn spring-boot:run
 ```
+*(Or use the Maven wrapper: `./mvnw spring-boot:run` on Unix or `.\mvnw spring-boot:run` on Windows)*
 
 Backend URL:
 
@@ -207,7 +218,7 @@ http://localhost:8080
 Navigate to frontend:
 
 ```bash
-cd healthcare-ui
+cd frontend
 ```
 
 Install dependencies:
