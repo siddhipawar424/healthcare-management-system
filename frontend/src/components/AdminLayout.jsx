@@ -18,6 +18,10 @@ function AdminLayout() {
   const handleLogout = () => {
     if (window.confirm("Are you sure you want to log out from the portal?")) {
       localStorage.removeItem("admin");
+      localStorage.removeItem("token");
+      localStorage.removeItem("role");
+      localStorage.removeItem("name");
+      localStorage.removeItem("email");
       navigate("/");
     }
   };
