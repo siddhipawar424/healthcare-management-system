@@ -1,26 +1,26 @@
-# 🏥 Healthcare Management System
+# Healthcare Management System
 
 A full-stack Healthcare Management System with **JWT Authentication**, **Role-Based Access Control (RBAC)**, doctor management, and appointment booking.
 
 ---
 
-## 🚀 Tech Stack
+## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| **Frontend** | React 18 + Vite, Axios, React Router v6 |
-| **Backend** | Spring Boot 3.5, Spring Security, JWT |
-| **Database** | MySQL 8 |
-| **Auth** | JWT (JSON Web Tokens) + BCrypt password hashing |
+|    Layer     |               Technology                       |
+|--------------|------------------------------------------------|
+| **Frontend** | React 18 + Vite, Axios, React Router v6        |
+| **Backend**  | Spring Boot 3.5, Spring Security, JWT          |
+| **Database** | MySQL 8                                        |
+| **Auth**     | JWT (JSON Web Tokens) + BCrypt password hashing|
 
 ---
 
-## 👥 Roles & Access
+## Roles & Access
 
-| Role | Register At | Access |
-|---|---|---|
-| **PATIENT** | `/register` → Patient tab | Book & view own appointments |
-| **ADMIN (Doctor)** | `/register` → Doctor tab | Full admin dashboard, manage doctors & appointments |
+|        Role        |        Register At        |                       Access                        |
+|--------------------|---------------------------|-----------------------------------------------------|
+| **PATIENT**        | `/register` → Patient tab | Book & view own appointments                        |
+| **ADMIN (Doctor)** | `/register` → Doctor tab  | Full admin dashboard, manage doctors & appointments |
 
 ### Default Admin Account
 > Created automatically on first server startup
@@ -31,7 +31,7 @@ Password: admin123
 
 ---
 
-## ⚙️ Setup & Installation
+## Setup & Installation
 
 ### Prerequisites
 - Java 17+
@@ -91,32 +91,32 @@ Frontend runs at: `http://localhost:5173`
 
 ---
 
-## 🔐 API Endpoints
+## API Endpoints
 
 ### Auth
-| Method | Endpoint | Description |
-|---|---|---|
-| `POST` | `/api/auth/register` | Register a new Patient |
+| Method | Endpoint                    | Description                   |
+|--------|-----------------------------|-------------------------------|
+| `POST` | `/api/auth/register`        | Register a new Patient        |
 | `POST` | `/api/auth/register-doctor` | Register a new Doctor (Admin) |
-| `POST` | `/api/auth/login` | Login (returns JWT token) |
+| `POST` | `/api/auth/login`           | Login (returns JWT token)     |
 
 ### Appointments
-| Method | Endpoint | Role | Description |
-|---|---|---|---|
-| `GET` | `/api/appointments` | ADMIN | Get all appointments |
-| `GET` | `/api/appointments/my` | PATIENT | Get current user's appointments |
-| `POST` | `/api/appointments` | PATIENT | Book an appointment |
+| Method | Endpoint              | Role   | Description                     |
+|--------|-----------------------|--------|---------------------------------|
+| `GET`  | `/api/appointments`   | ADMIN  | Get all appointments            |
+| `GET`  | `/api/appointments/my`| PATIENT| Get current user's appointments |
+| `POST` | `/api/appointments`   | PATIENT| Book an appointment             |
 
 ### Doctors
-| Method | Endpoint | Role | Description |
-|---|---|---|---|
-| `GET` | `/api/doctors` | Public | List all doctors |
-| `POST` | `/api/doctors` | ADMIN | Add a doctor |
-| `DELETE` | `/api/doctors/{id}` | ADMIN | Remove a doctor |
+| Method  | Endpoint            | Role  | Description      |
+|---------|---------------------|-------|------------------|
+| `GET`   | `/api/doctors`      | Public| List all doctors |
+| `POST`  | `/api/doctors`      | ADMIN | Add a doctor     |
+| `DELETE`| `/api/doctors/{id}` | ADMIN | Remove a doctor  |
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 healthcare/
@@ -136,7 +136,7 @@ healthcare/
 
 ---
 
-## 🔒 Security Notes
+## Security Notes
 
 - Passwords are hashed using **BCrypt**
 - JWTs expire after **24 hours**
@@ -146,18 +146,18 @@ healthcare/
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
-| Page | Description |
-|---|---|
-| `/register` | Patient & Doctor registration with tab toggle |
-| `/login` | JWT-based login for both roles |
-| `/appointments` | Patient's personal appointment history |
-| `/admin-dashboard` | Full admin panel for doctors & appointments |
+| Page               | Description                                   |
+|--------------------|-----------------------------------------------|
+| `/register`        | Patient & Doctor registration with tab toggle |
+| `/login`           | JWT-based login for both roles                |
+| `/appointments`    | Patient's personal appointment history        |
+| `/admin-dashboard` | Full admin panel for doctors & appointments   |
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repo
 2. Create a feature branch: `git checkout -b feature/my-feature`
@@ -167,6 +167,6 @@ healthcare/
 
 ---
 
-## 📄 License
+## License
 
-MIT License — free to use and modify.
+MIT License - free to use and modify.
