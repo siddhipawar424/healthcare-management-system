@@ -1,308 +1,172 @@
-# Healthcare Management System
+# 🏥 Healthcare Management System
 
-A full-stack Healthcare Management System built using **Spring Boot, React, and MySQL**. The application enables patients to browse doctors, book appointments, and contact healthcare support, while providing administrators with a dedicated dashboard to manage doctors, appointments, and inquiries efficiently.
-
----
-
-## Features
-
-### Patient Module
-
-* View all available doctors
-* Search doctors by specialization
-* View detailed doctor profiles
-* Book appointments online
-* View appointment information
-* Contact healthcare support
-* Responsive and user-friendly interface
-
-### Admin Module
-
-* Secure Admin Login
-* Dashboard Analytics
-* Doctor Management
-
-  * Add Doctor
-  * Edit Doctor
-  * Delete Doctor
-* Appointment Management
-
-  * View Appointments
-  * Edit Appointments
-  * Delete Appointments
-  * Update Appointment Status
-* Contact Message Management
-
-  * View Messages
-  * Delete Messages
-* Logout Functionality
-
-### Appointment Status Tracking
-
-Appointments can be managed through the following statuses:
-
-* PENDING
-* CONFIRMED
-* CANCELLED
+A full-stack Healthcare Management System with **JWT Authentication**, **Role-Based Access Control (RBAC)**, doctor management, and appointment booking.
 
 ---
 
-## Technology Stack
+## 🚀 Tech Stack
 
-### Frontend
-
-* React
-* Vite
-* React Router DOM
-* Axios
-* CSS3
-
-### Backend
-
-* Spring Boot
-* Spring Web
-* JDBC Template
-* Maven
-
-### Database
-
-* MySQL
-
-### Version Control
-
-* Git
-* GitHub
+| Layer | Technology |
+|---|---|
+| **Frontend** | React 18 + Vite, Axios, React Router v6 |
+| **Backend** | Spring Boot 3.5, Spring Security, JWT |
+| **Database** | MySQL 8 |
+| **Auth** | JWT (JSON Web Tokens) + BCrypt password hashing |
 
 ---
 
-## Project Structure
+## 👥 Roles & Access
 
-```text
-healthcare-management-system/
-│
-├── backend/                       # Spring Boot Backend
-│   ├── src/
-│   ├── pom.xml
-│   ├── mvnw
-│   ├── mvnw.cmd
-│   └── .mvn/
-│
-├── frontend/                      # Vite React Frontend
-│   ├── src/
-│   ├── public/
-│   ├── package.json
-│   └── vite.config.js
-│
-├── database/                      # Database Migrations
-│   └── migrations/
-│       └── migration_add_appointment_status.sql
-│
-├── screenshots/                   # Application Screenshots
-│
-├── docs/                          # Project Documentation
-│
-├── README.md
-└── .gitignore
+| Role | Register At | Access |
+|---|---|---|
+| **PATIENT** | `/register` → Patient tab | Book & view own appointments |
+| **ADMIN (Doctor)** | `/register` → Doctor tab | Full admin dashboard, manage doctors & appointments |
+
+### Default Admin Account
+> Created automatically on first server startup
+```
+Email:    admin@healthcare.com
+Password: admin123
 ```
 
 ---
 
-## Screenshots
+## ⚙️ Setup & Installation
 
-### Home Page
-
-![Home Page](screenshots/home.png)
-
-### Doctors Page
-
-![Doctors Page](screenshots/doctors.png)
-
-### Contact Page
-
-![Contact Page](screenshots/contact.png)
-
-### Appointment Booking
-
-![Appointment Booking](screenshots/appointment.png)
-
-### Contact Page
-
-![Contact Page](screenshots/contact.png)
-
-### Admin Dashboard
-
-![Admin Dashboard](screenshots/admin_dashboard.png)
-
-### Manage Doctors
-
-![Manage Doctors](screenshots/manage_doctor.png)
-
-### Manage Appointments
-
-![Manage Appointments](screenshots/manage_appointment.png)
+### Prerequisites
+- Java 17+
+- Node.js 18+
+- MySQL 8
+- Maven 3.8+
 
 ---
 
-## Database Tables
+### 1. Database Setup
 
-### Doctor
+Create the database in MySQL:
+```sql
+CREATE DATABASE healthcare;
+```
 
-| Field          | Type    |
-| -------------- | ------- |
-| id             | INT     |
-| name           | VARCHAR |
-| specialization | VARCHAR |
-| experience     | INT     |
-| fees           | DECIMAL |
-
-### Appointment
-
-| Field            | Type    |
-| ---------------- | ------- |
-| id               | INT     |
-| patient_name     | VARCHAR |
-| doctor_id        | INT     |
-| appointment_date | DATE    |
-| status           | VARCHAR |
-
-### Contact Message
-
-| Field   | Type    |
-| ------- | ------- |
-| id      | INT     |
-| name    | VARCHAR |
-| email   | VARCHAR |
-| subject | VARCHAR |
-| message | TEXT    |
+The application will create the required tables automatically via schema on startup.
 
 ---
 
-## Installation
+### 2. Backend Setup
 
-### Clone Repository
-
+**Clone and configure:**
 ```bash
-git clone https://github.com/siddhipawar424/healthcare-management-system.git
-cd healthcare-management-system
+cd backend/src/main/resources
+cp application.properties application-local.properties
 ```
 
-### Backend Setup
-
-Configure database credentials in:
-
+Edit `application-local.properties` with your values:
 ```properties
-backend/src/main/resources/application.properties
+spring.datasource.url=jdbc:mysql://localhost:3306/healthcare
+spring.datasource.username=your_mysql_username
+spring.datasource.password=your_mysql_password
+jwt.secret=your_jwt_secret_key_at_least_32_chars
+jwt.expiration=86400000
 ```
 
-Navigate to backend:
-
+**Run the backend:**
 ```bash
 cd backend
-```
-
-Run backend:
-
-```bash
 mvn spring-boot:run
 ```
-*(Or use the Maven wrapper: `./mvnw spring-boot:run` on Unix or `.\mvnw spring-boot:run` on Windows)*
 
-Backend URL:
+Backend runs at: `http://localhost:8080`
 
-```text
-http://localhost:8080
-```
+---
 
-### Frontend Setup
-
-Navigate to frontend:
+### 3. Frontend Setup
 
 ```bash
 cd frontend
-```
-
-Install dependencies:
-
-```bash
 npm install
-```
-
-Run application:
-
-```bash
 npm run dev
 ```
 
-Frontend URL:
-
-```text
-http://localhost:5173
-```
+Frontend runs at: `http://localhost:5173`
 
 ---
 
-## REST API Endpoints
+## 🔐 API Endpoints
 
-### Doctors
-
-```http
-GET    /api/doctors
-POST   /api/doctors
-PUT    /api/doctors/{id}
-DELETE /api/doctors/{id}
-```
+### Auth
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/auth/register` | Register a new Patient |
+| `POST` | `/api/auth/register-doctor` | Register a new Doctor (Admin) |
+| `POST` | `/api/auth/login` | Login (returns JWT token) |
 
 ### Appointments
+| Method | Endpoint | Role | Description |
+|---|---|---|---|
+| `GET` | `/api/appointments` | ADMIN | Get all appointments |
+| `GET` | `/api/appointments/my` | PATIENT | Get current user's appointments |
+| `POST` | `/api/appointments` | PATIENT | Book an appointment |
 
-```http
-GET    /api/appointments
-POST   /api/appointments
-PUT    /api/appointments/{id}
-DELETE /api/appointments/{id}
-PATCH  /api/appointments/{id}/status
+### Doctors
+| Method | Endpoint | Role | Description |
+|---|---|---|---|
+| `GET` | `/api/doctors` | Public | List all doctors |
+| `POST` | `/api/doctors` | ADMIN | Add a doctor |
+| `DELETE` | `/api/doctors/{id}` | ADMIN | Remove a doctor |
+
+---
+
+## 📁 Project Structure
+
+```
+healthcare/
+├── backend/
+│   └── src/main/java/com/siddhi/healthcare/
+│       ├── controller/        # REST controllers
+│       ├── model/             # Entity models + DTOs
+│       ├── repository/        # JDBC repositories
+│       └── security/          # JWT filter, config, seeder
+├── frontend/
+│   └── src/
+│       ├── components/        # React components & pages
+│       ├── utils/             # Shared utilities & icons
+│       └── App.jsx            # Routes & layout
+└── README.md
 ```
 
-### Contact Messages
+---
 
-```http
-GET    /api/contact
-POST   /api/contact
-DELETE /api/contact/{id}
-```
+## 🔒 Security Notes
+
+- Passwords are hashed using **BCrypt**
+- JWTs expire after **24 hours**
+- All protected routes require `Authorization: Bearer <token>` header
+- The Axios interceptor automatically attaches the token on every request
+- **Never commit** `application-local.properties` or `.env` files
 
 ---
 
-## Key Learning Outcomes
+## 📸 Screenshots
 
-Through this project, I gained practical experience in:
-
-* Full-Stack Application Development
-* Building REST APIs using Spring Boot
-* MySQL Database Design and CRUD Operations
-* React Component-Based Architecture
-* API Integration using Axios
-* State Management with React Hooks
-* Admin Dashboard Development
-* Route Protection and Authentication Concepts
-* Git and GitHub Version Control
+| Page | Description |
+|---|---|
+| `/register` | Patient & Doctor registration with tab toggle |
+| `/login` | JWT-based login for both roles |
+| `/appointments` | Patient's personal appointment history |
+| `/admin-dashboard` | Full admin panel for doctors & appointments |
 
 ---
 
-## Future Enhancements
+## 🤝 Contributing
 
-* JWT Authentication
-* Role-Based Access Control (RBAC)
-* Email Notifications
-* Doctor Availability Scheduling
-* Patient Portal
-* Medical Records Module
-* Online Payments
-* Cloud Deployment
+1. Fork the repo
+2. Create a feature branch: `git checkout -b feature/my-feature`
+3. Commit your changes: `git commit -m 'feat: add my feature'`
+4. Push to the branch: `git push origin feature/my-feature`
+5. Open a Pull Request
 
 ---
 
-## Author
+## 📄 License
 
-### Siddhi Pawar
-
-GitHub: https://github.com/siddhipawar424
+MIT License — free to use and modify.

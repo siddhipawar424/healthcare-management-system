@@ -2,11 +2,13 @@
 # Healthcare Management System - Git Ignore
 # ==========================================
 
-# Environment variables
+# Environment variables & local secrets - NEVER COMMIT THESE
 backend/.env
 .env
 .env.local
 .env.*.local
+backend/src/main/resources/application-local.properties
+backend/src/main/resources/application-dev.properties
 HELP.md
 
 # Dependency directories
