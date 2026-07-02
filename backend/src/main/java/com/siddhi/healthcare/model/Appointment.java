@@ -9,6 +9,7 @@ public class Appointment {
     private int doctorId;
     private LocalDate appointmentDate;
     private String status;
+    private Integer userId;
 
     public Appointment() {
     }
@@ -51,5 +52,13 @@ public class Appointment {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 }

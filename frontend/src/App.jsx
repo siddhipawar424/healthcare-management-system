@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Link, Navigate } from "react-router-dom";
 import { useEffect } from "react";
 import { FaSearch } from "./utils/icons";
 import Navbar from "./components/Navbar";
@@ -12,7 +12,8 @@ import Appointments from "./components/Appointments";
 import Dashboard from "./components/Dashboard";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import AdminLogin from "./components/AdminLogin";
+import Login from "./components/Login";
+import Register from "./components/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ManageDoctors from "./components/ManageDoctors";
 import ManageAppointments from "./components/ManageAppointments";
@@ -33,12 +34,14 @@ function AppLayout() {
           <Route path="/"              element={<Home />} />
           <Route path="/doctors"       element={<Doctors />} />
           <Route path="/doctors/:id"   element={<DoctorDetails />} />
-          <Route path="/book"          element={<BookAppointment />} />
-          <Route path="/appointments"  element={<Appointments />} />
-          <Route path="/admin-dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}/>
-          <Route path="/admin/doctors" element={<ProtectedRoute><ManageDoctors /></ProtectedRoute>}/>
-          <Route path="/admin/appointments" element={<ProtectedRoute><ManageAppointments /></ProtectedRoute>}/>
-          <Route path="/admin-login" element={<AdminLogin />}/>
+          <Route path="/book"          element={<ProtectedRoute allowedRoles={['PATIENT', 'ADMIN']}><BookAppointment /></ProtectedRoute>} />
+          <Route path="/appointments"  element={<ProtectedRoute allowedRoles={['PATIENT', 'ADMIN']}><Appointments /></ProtectedRoute>} />
+          <Route path="/admin-dashboard" element={<ProtectedRoute allowedRoles={['ADMIN']}><Dashboard /></ProtectedRoute>}/>
+          <Route path="/admin/doctors" element={<ProtectedRoute allowedRoles={['ADMIN']}><ManageDoctors /></ProtectedRoute>}/>
+          <Route path="/admin/appointments" element={<ProtectedRoute allowedRoles={['ADMIN']}><ManageAppointments /></ProtectedRoute>}/>
+          <Route path="/login"         element={<Login />}/>
+          <Route path="/admin-login"   element={<Navigate to="/login" replace />}/>
+          <Route path="/register"      element={<Register />}/>
           <Route path="/about"         element={<About />} />
           <Route path="/contact"       element={<Contact />} />
           <Route path="*" element={

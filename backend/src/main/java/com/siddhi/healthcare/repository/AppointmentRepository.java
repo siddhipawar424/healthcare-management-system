@@ -15,8 +15,8 @@ public class AppointmentRepository {
 
     public int bookAppointment(Appointment appointment) {
         String sql = """
-                INSERT INTO appointment(patient_name, doctor_id, appointment_date, status)
-                VALUES(?, ?, ?, ?)
+                INSERT INTO appointment(patient_name, doctor_id, appointment_date, status, user_id)
+                VALUES(?, ?, ?, ?, ?)
                 """;
 
         String status = appointment.getStatus() != null ? appointment.getStatus() : "PENDING";
@@ -26,13 +26,14 @@ public class AppointmentRepository {
                 appointment.getPatientName(),
                 appointment.getDoctorId(),
                 appointment.getAppointmentDate(),
-                status
+                status,
+                appointment.getUserId()
         );
     }
 
     public List<Appointment> getAppointments() {
         String sql = """
-                SELECT id, patient_name, doctor_id, appointment_date, status
+                SELECT id, patient_name, doctor_id, appointment_date, status, user_id
                 FROM appointment
                 ORDER BY id DESC
                 """;
@@ -40,9 +41,20 @@ public class AppointmentRepository {
         return jdbcTemplate.query(sql, this::mapRow);
     }
 
+    public List<Appointment> getAppointmentsByUserId(int userId) {
+        String sql = """
+                SELECT id, patient_name, doctor_id, appointment_date, status, user_id
+                FROM appointment
+                WHERE user_id = ?
+                ORDER BY id DESC
+                """;
+
+        return jdbcTemplate.query(sql, this::mapRow, userId);
+    }
+
     public Appointment findById(int id) {
         String sql = """
-                SELECT id, patient_name, doctor_id, appointment_date, status
+                SELECT id, patient_name, doctor_id, appointment_date, status, user_id
                 FROM appointment
                 WHERE id = ?
                 """;
@@ -87,6 +99,8 @@ public class AppointmentRepository {
         appointment.setAppointmentDate(date != null ? date.toLocalDate() : null);
         String status = rs.getString("status");
         appointment.setStatus(status != null ? status : "PENDING");
+        int userId = rs.getInt("user_id");
+        appointment.setUserId(rs.wasNull() ? null : userId);
         return appointment;
     }
 }
